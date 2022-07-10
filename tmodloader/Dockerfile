@@ -6,15 +6,23 @@ RUN apk add --update-cache \
 # add the bootstrap file
 COPY bootstrap.sh /terraria-server/bootstrap.sh
 
-ENV DL_LINK=https://github.com/tModLoader/tModLoader/releases/download/v2022.06.96.4/tModLoader.zip
-ENV DL_FILE=tModLoader.zip
+ENV TERRARIA_LINK=https://terraria.org/api/download/pc-dedicated-server/terraria-server-1436.zip
+ENV TERRARIA_VERSION=1436
+ENV TERRARIA_FILE=terraria-server-1436.zip
+ENV TMODLOADER_LINK=https://github.com/tModLoader/tModLoader/releases/download/v2022.06.96.4/tModLoader.zip
+ENV TMODLOADER_FILE=tModLoader.zip
 
-ADD $DL_LINK /$DL_FILE
+ADD $TERRARIA_LINK /$TERRARIA_FILE
+ADD $TMODLOADER_LINK /$TMODLOADER_FILE
 
-RUN unzip /$DL_FILE -d /terraria && \
-    mv /terraria/* /terraria-server && \
+RUN unzip /$TERRARIA_FILE -d /terraria && \
+    unzip /$TMODLOADER_FILE -d /tmodloader && \
+    mv /terraria/$DL_VERSION/Linux/* /terraria-server && \
+    mv /tmodloader/* /terraria-server && \
     mv /terraria-server/serverconfig.txt /terraria-server/serverconfig-default.txt && \
-    chmod +x /terraria-server/tModLoader.dll
+    chmod +x /terraria-server/tModLoader.dll && \
+    chmod +x /terraria-server/TerrariaServer && \
+    chmod +x /terraria-server/TerrariaServer.bin.x86_64
 
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 
