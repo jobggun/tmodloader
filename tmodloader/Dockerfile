@@ -17,6 +17,7 @@ ADD $TMODLOADER_LINK /$TMODLOADER_FILE
 
 RUN unzip /$TERRARIA_FILE -d /terraria && \
     unzip /$TMODLOADER_FILE -d /tmodloader && \
+    mkdir -p /terraria-server/tmod && \
     mv /tmodloader/* /terraria-server && \
     mv /terraria/$TERRARIA_VERSION/Linux/* /terraria-server/tmod && \
     mv /terraria-server/serverconfig.txt /terraria-server/serverconfig-default.txt && \
