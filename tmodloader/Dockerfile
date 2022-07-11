@@ -24,7 +24,7 @@ RUN unzip /$TERRARIA_FILE -d /terraria && \
     chmod +x /terraria-server/TerrariaServer && \
     chmod +x /terraria-server/TerrariaServer.bin.x86_64
 
-FROM mono:6
+FROM mcr.microsoft.com/dotnet/runtime:6.0
 
 # documenting ports
 EXPOSE 7777
