@@ -18,12 +18,12 @@ if [ -z "$WORLD_FILENAME" ]; then
   else
     echo "Running server with command flags: $@"
   fi
-  dotnet tModLoader.dll -config "$CONFIGPATH/$CONFIG_FILENAME" -logpath "$LOGPATH" "$@"
+  mono tModLoader.dll -config "$CONFIGPATH/$CONFIG_FILENAME" -logpath "$LOGPATH" "$@"
 else
   echo "Environment WORLD_FILENAME specified"
   if [ -f "$WORLD_PATH" ]; then
     echo "Loading to world $WORLD_FILENAME..."
-    dotnet tModLoader.dll -config "$CONFIGPATH/$CONFIG_FILENAME" -logpath "$LOGPATH" "$@" -world "$WORLD_PATH" "$@"
+    mono tModLoader.dll -config "$CONFIGPATH/$CONFIG_FILENAME" -logpath "$LOGPATH" "$@" -world "$WORLD_PATH" "$@"
   else
     echo "Unable to locate $WORLD_PATH."
     echo "Please make sure your world file is volumed into docker: -v <path_to_world_file>:$WORLDPATH"
