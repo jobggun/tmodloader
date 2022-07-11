@@ -22,8 +22,8 @@ RUN unzip /$TERRARIA_FILE -d /terraria && \
     mv /terraria/$TERRARIA_VERSION/Linux/* /terraria-server/tmod && \
     mv /terraria-server/serverconfig.txt /terraria-server/serverconfig-default.txt && \
     chmod +x /terraria-server/tModLoader.dll && \
-    chmod +x /terraria-server/TerrariaServer && \
-    chmod +x /terraria-server/TerrariaServer.bin.x86_64
+    chmod +x /terraria-server/tmod/TerrariaServer && \
+    chmod +x /terraria-server/tmod/TerrariaServer.bin.x86_64
 
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 
