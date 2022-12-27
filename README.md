@@ -1,9 +1,6 @@
-# Terraria
+# Tmodloader (forked from ryshe/terraria)
 
-**[UPDATE]** I know a lot of people are excited for Terraria v1.4 Journey's End!  This source code is built around the pre-release
-of [TShock][TShock].  Will continue to update as new releases come out.
-
-This project is a Dockerfile to containerize [TShock][TShock] and [Terraria](https://terraria.org/) TerrariaServer.exe to run on linux.  [Docker][Docker] will remove the need for someone to worry about how to setup a server in linux with all the right dependencies to run.  The installation and usage instructions are written with complete beginners in mind.
+This project is a Dockerfile to containerize [tModLoader][tModLoader] TerrariaServer.exe to run on linux.  [Docker][Docker] will remove the need for someone to worry about how to setup a server in linux with all the right dependencies to run.  The installation and usage instructions are written with complete beginners in mind.
 
 ## Quick start guide
 
@@ -218,5 +215,5 @@ Email me rsheehan at gmail dot com if any of these instructions do not seem to w
 
 * Fork TShock and create a Dockerfile to build the project
 
-[TShock]: https://github.com/Pryaxis/TShock/releases
+[tModLoader]: https://github.com/tModLoader/tModLoader/releases
 [Docker]: https://docs.docker.com/get-docker/
