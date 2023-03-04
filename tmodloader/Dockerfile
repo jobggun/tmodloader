@@ -9,7 +9,7 @@ COPY bootstrap.sh /terraria-server/bootstrap.sh
 ENV TERRARIA_LINK=https://terraria.org/api/download/pc-dedicated-server/terraria-server-1436.zip
 ENV TERRARIA_VERSION=1436
 ENV TERRARIA_FILE=terraria-server-1436.zip
-ENV TMODLOADER_LINK=https://github.com/tModLoader/tModLoader/releases/download/v2022.09.47.21/tModLoader.zip
+ENV TMODLOADER_LINK=https://github.com/tModLoader/tModLoader/releases/download/v2022.09.47.33/tModLoader.zip
 ENV TMODLOADER_FILE=tModLoader.zip
 
 ADD $TERRARIA_LINK /$TERRARIA_FILE
