@@ -3,7 +3,7 @@ name: Build tModLoader
 on:
   push:
     tags:
-      - tmodloader-*
+     - '*'
   workflow_dispatch:
 
 jobs:
