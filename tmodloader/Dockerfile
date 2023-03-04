@@ -1,4 +1,4 @@
-FROM alpine:3.15.0 AS base
+FROM alpine:3.16.3 AS base
 
 RUN apk add --update-cache \
     unzip
@@ -6,11 +6,14 @@ RUN apk add --update-cache \
 # add the bootstrap file
 COPY bootstrap.sh /terraria-server/bootstrap.sh
 
-ENV TERRARIA_LINK=https://terraria.org/api/download/pc-dedicated-server/terraria-server-1436.zip
+# version
 ENV TERRARIA_VERSION=1436
-ENV TERRARIA_FILE=terraria-server-1436.zip
-ENV TMODLOADER_LINK=https://github.com/tModLoader/tModLoader/releases/download/v2022.09.47.33/tModLoader.zip
+ENV TMODLOADER_VERSION=v2022.09.47.33
+
+ENV TERRARIA_FILE=terraria-server-${TERRARIA_VERSION}.zip
+ENV TERRARIA_LINK=https://terraria.org/api/download/pc-dedicated-server/${TERRARIA_FILE}
 ENV TMODLOADER_FILE=tModLoader.zip
+ENV TMODLOADER_LINK=https://github.com/tModLoader/tModLoader/releases/download/${TMODLOADER_VERSION}/${TMODLOADER_FILE}
 
 ADD $TERRARIA_LINK /$TERRARIA_FILE
 ADD $TMODLOADER_LINK /$TMODLOADER_FILE
