@@ -30,23 +30,22 @@ RUN unzip /$TERRARIA_FILE -d /terraria && \
 
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 
-# documenting ports
-EXPOSE 7777
+COPY --from=base --chown=${USER}:${USER} /terraria-server/ /terraria-server/
 
-# env used in the bootstrap
-ENV LOGPATH=/terraria-server/logs
-ENV WORLDPATH=/root/.local/share/Terraria/tModLoader/Worlds
-ENV MODPATH=/root/.local/share/Terraria/tModLoader/Mods
-ENV WORLD_FILENAME=""
-ENV CONFIGPATH=/config
-ENV CONFIG_FILENAME="serverconfig.txt"
-
-VOLUME [ "${WORLDPATH}", "${MODPATH}", "${CONFIGPATH}", "${LOGPATH}" ]
-
-COPY --from=base /terraria-server/ /terraria-server/
-
-# Set working directory to server
 WORKDIR /terraria-server
 
+ENV TML_SAVE_DIRECTORY=/tModLoader
+ENV CONFIG_FILENAME=serverconfig.txt
+ENV WORLD_FILENAME=
+VOLUME [ "${TML_SAVE_DIRECTORY}" ]
+
+ARG PUID=1000
+ENV USER=terraria
+RUN useradd -u "${PUID}" -m "${USER}"
+
 ENTRYPOINT [ "/bin/sh", "bootstrap.sh" ]
+
+EXPOSE 7777
+
+USER ${USER}
 
